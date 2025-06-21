@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>달빵을 먹은 뚜뚜</title>
-  <!-- Google Fonts에서 귀여운 글씨체 추가 -->
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
   <style>
     body {
@@ -38,13 +36,24 @@
     a:hover {
       text-decoration: underline;
     }
+    #music-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #f5a623;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+    #music-btn:hover {
+      background-color: #e69500;
+    }
   </style>
 </head>
-<body><audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/17/audio_6dc403a0f0.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-  <button onclick="document.querySelector('audio').play()">🎵 동화 음악 들으러 가기</button>
+<body>
+
   <h1>🌕 달빵을 먹은 뚜뚜</h1>
   <h2>🍞 수현이의 상상에서 피어난 이야기</h2>
   <p>
@@ -53,12 +62,37 @@
     이 이야기는 사랑스러운 수현이의 꿈에서 시작되었답니다.
   </p>
 
-  <!-- 삽화 이미지 (AI 예시) -->
+  <!-- 삽화 이미지 -->
   <img src="https://cdn.pixabay.com/photo/2023/10/02/16/26/moon-8287443_960_720.jpg" alt="달과 뚜뚜의 상상 여행">
+
+  <!-- 음악 재생 버튼 -->
+  <button id="music-btn">🎵 음악 재생하기</button>
+  <audio id="background-music" loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/17/audio_6dc403a0f0.mp3" type="audio/mpeg">
+    브라우저가 오디오 태그를 지원하지 않아요.
+  </audio>
 
   <p>
     📖 <a href="#">전자책 보기</a><br>
     🎨 <a href="#">삽화 감상하기</a>
   </p>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const btn = document.getElementById('music-btn');
+    let isPlaying = false;
+
+    btn.addEventListener('click', () => {
+      if (!isPlaying) {
+        music.play();
+        btn.textContent = '⏸️ 음악 멈추기';
+      } else {
+        music.pause();
+        btn.textContent = '🎵 음악 재생하기';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
 </body>
 </html>
